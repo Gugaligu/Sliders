@@ -2,6 +2,9 @@
     --slider-width: 100vw;
     --slider-height: 100vh;
 }
+.dname{
+    font-size: 1.5em;
+}
 .slider-conteiner{
     width: var(--slider-width);
     height: var(--slider-height);
