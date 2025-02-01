@@ -1,1 +1,1 @@
-# Sliders
+# Sliders.github.io
