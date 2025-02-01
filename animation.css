@@ -1,0 +1,24 @@
+@keyframes anim{
+    0%{
+        display: block;
+    }
+    100%{
+        translate: -200vw;
+        display:none ;
+    }
+}
+@keyframes anim2{
+    0%{
+        translate: 200vw;
+        display:none ;
+    }
+    100%{
+        display:block;
+    }
+}
+.exiting-table{
+    animation: anim 0.2s forwards;
+}
+.incoming-table{
+    animation: anim2 1s forwards;
+}
