@@ -6,7 +6,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(13, 15, 23);
+    background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(20,20,20,1) 100%);
 }
 .fit-content{
     width: fit-content;
