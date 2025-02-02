@@ -1,8 +1,9 @@
 let ex=document.getElementById("ex")
 let inc=document.getElementById("inc")
 let D=new Date()
-console.log(D.getTime())
+console.log(D.getDay())
 let count=D.getDay()
+let regulatorSlider=0
 const btnnext=document.getElementById("btnnext")
 const btnback=document.getElementById("btnback")
 const daynames=["понедельник", "вторник", "среда", "четверг", "пятница", "суббота"]
@@ -16,15 +17,15 @@ function DAYFUNC(){
     else{
         document.getElementById(`DAY0`).textContent=(daynames.at(count));
     }
-    let tmp=ex.className;
-    ex.className=`${inc.className}`;
-    inc.className=tmp;}
+}
 DAYFUNC()
 
 
 btnnext.addEventListener("click",function(){
     count+=1;
-    document.getElementById(`DAY${Number(!(Math.abs(count)%2))}`).textContent=(daynames.at(Math.abs(count)%6));
+    console.log(count)
+    regulatorSlider=!(regulatorSlider)
+    document.getElementById(`DAY${Number(!(regulatorSlider))}`).textContent=(daynames.at(count%6));
     let tmp=ex.className;
     ex.className=`${inc.className}`;
     inc.className=tmp;
@@ -32,7 +33,8 @@ btnnext.addEventListener("click",function(){
 btnback.addEventListener("click",function(){
     count-=1;
     console.log(count)
-    document.getElementById(`DAY${Number(!(count%2))}`).textContent=(daynames.at(count%6));
+    regulatorSlider=!(regulatorSlider)
+    document.getElementById(`DAY${Number(!(regulatorSlider))}`).textContent=(daynames.at(count%6));
     let tmp=ex.className;
     ex.className=`${inc.className}`;
     inc.className=tmp;
