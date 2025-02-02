@@ -1,7 +1,7 @@
 let ex=document.getElementById("ex")
 let inc=document.getElementById("inc")
 let D=new Date()
-let Dayofnedel=6
+let Dayofnedel=D.getDay()
 let regulatorSlider=0
 const btnnext=document.getElementById("btnnext")
 const btnback=document.getElementById("btnback")
