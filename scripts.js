@@ -28,18 +28,14 @@ function DAYFUNC(){
         console.log(Dayofnedel)
     }
     else if(Dayofnedel==6){
-        document.getElementById(`DAY1`).textContent=(daynames.at(5));
-        Dayofnedel=5
+        document.getElementById(`DAY1`).textContent=(daynames.at(0));
+        Dayofnedel=0
     }
     else{
         document.getElementById(`DAY1`).textContent=(daynames.at(Dayofnedel));
     }
 }
 DAYFUNC()
-
-
-
-
 btnnext.addEventListener("click",function(){
     Dayofnedel+=1;
     console.log(Dayofnedel)
