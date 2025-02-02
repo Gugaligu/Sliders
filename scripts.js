@@ -2,7 +2,7 @@ let ex=document.getElementById("ex")
 let inc=document.getElementById("inc")
 let D=new Date()
 console.log(D.getTime())
-let count=D.getDay()-1
+let count=D.getDay()
 const btnnext=document.getElementById("btnnext")
 const btnback=document.getElementById("btnback")
 const daynames=["понедельник", "вторник", "среда", "четверг", "пятница", "суббота"]
