@@ -16,7 +16,7 @@ function getnedel() {
     if (today < septemberFirst) {year -= 1;}
     const lastSeptemberFirst = new Date(year, 8, 1);
     const diffInMilliseconds = today - lastSeptemberFirst;
-    let weeksPassed = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24 * 7));
+    let weeksPassed = Math.ceil(diffInMilliseconds / (1000 * 60 * 60 * 24 * 7));
     if (Dayofnedel==0){weeksPassed+=1;}
     return weeksPassed;
 }
@@ -29,11 +29,12 @@ function DAYFUNC(){
         console.log(Dayofnedel)
     }
     else if(Dayofnedel==6){
-        document.getElementById(`DAY1`).textContent=(daynames.at(0))+` ${peremnedel}`;
-        Dayofnedel=0
+        document.getElementById(`DAY1`).textContent=(daynames.at(5))+` ${peremnedel}`;
+        Dayofnedel--
     }
     else{
-        document.getElementById(`DAY1`).textContent=(daynames.at(Dayofnedel))+` ${peremnedel}`;
+        document.getElementById(`DAY1`).textContent=(daynames.at(Dayofnedel-1))+` ${peremnedel}`;
+        Dayofnedel--
     }
 }
 DAYFUNC()
@@ -62,29 +63,37 @@ function slider_week_update(nedel){
 }
 slider_week_update(teknedel)
 
-function updatenedel(nedel){
+function btn_slide(action,nedel){
+    tmp_Dayofnedel_before=Dayofnedel%6
+    if (action==`back`){Dayofnedel-=1;}
+    else if(action==`next`){Dayofnedel+=1;}
+    tmp_Dayofnedel_after=Dayofnedel%6
     regulatorSlider=!(regulatorSlider)
-    document.getElementById(`DAY${Number(!(regulatorSlider))}`).textContent=(daynames.at(0))+` ${nedel}`;
+
+    if (tmp_Dayofnedel_before==5 && tmp_Dayofnedel_after==0 || tmp_Dayofnedel_before==-1 && tmp_Dayofnedel_after==0){
+        nedel++
+        peremnedel++}
+    else if (tmp_Dayofnedel_before==0 && tmp_Dayofnedel_after==5 || tmp_Dayofnedel_before==0 && tmp_Dayofnedel_after==-1){
+        nedel--
+        peremnedel--
+    }
+    console.log(Dayofnedel)
+    
+    document.getElementById(`DAY${Number(!(regulatorSlider))}`).textContent=(daynames.at(Dayofnedel%6))+` ${nedel}`;
     let tmp=inc.className;
     inc.className=`${ex.className}`;
     ex.className=tmp;
+}
+
+function updatenedel(nedel){
     peremnedel=nedel
+    btn_slide("",nedel)
     slider_week_update(nedel)
 }
 
-function btn_slide(action){
-    if (action==`back`){Dayofnedel-=1;}
-    else if(action==`next`){Dayofnedel+=1;}
-    regulatorSlider=!(regulatorSlider)
-    document.getElementById(`DAY${Number(!(regulatorSlider))}`).textContent=(daynames.at(Dayofnedel%6))+` ${peremnedel}`;
-    let tmp=inc.className;
-    inc.className=`${ex.className}`;
-    ex.className=tmp;
-    // if (Dayofnedel%6=)
-    // updatenedel(peremnedel)
-}
-btnnext.addEventListener("click",function(){btn_slide(`next`);})
-btnback.addEventListener("click",function(){btn_slide(`back`);})
+
+btnnext.addEventListener("click",function(){btn_slide(`next`,peremnedel);})
+btnback.addEventListener("click",function(){btn_slide(`back`,peremnedel);})
 
 
 document.getElementById("scroll-btn-1").addEventListener('click',function(){updatenedel(document.getElementById("scroll-btn-1").textContent)})

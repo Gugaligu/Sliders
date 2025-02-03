@@ -17,7 +17,7 @@
     }
 }
 .exiting-table{
-    animation: anim 0.2s forwards;
+    animation: anim 0.3s forwards;
 }
 .incoming-table{
     animation: anim2 1s forwards;
