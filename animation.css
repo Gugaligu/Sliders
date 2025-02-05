@@ -1,6 +1,10 @@
 @keyframes anim{
     0%{
         display: block;
+        opacity: 1;
+    }
+    5%{
+        opacity: 0;
     }
     100%{
         translate: -200vw;
@@ -11,14 +15,32 @@
     0%{
         translate: 200vw;
         display:none ;
+        opacity: 0;
+    }
+    80%{
+        opacity: 0;
     }
     100%{
         display:block;
+        opacity: 1;
     }
 }
 .exiting-table{
-    animation: anim 0.3s forwards;
+    animation: anim 0.6s forwards;
 }
 .incoming-table{
-    animation: anim2 1s forwards;
+    animation: anim2 0.8s forwards;
+}
+
+
+@keyframes scroll-anim{
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+.scroll-hide{
+    animation: scroll-anim 0.6s ease-out;
 }
