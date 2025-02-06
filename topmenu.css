@@ -4,8 +4,7 @@ nav{
     justify-content: space-between;
     width: 100vw;
     height: 60px;    
-    border-bottom:1px solid aliceblue ;
-    border-radius: 20px;
+    border-bottom:1px solid aliceblue ;
     background: rgb(10, 11, 16);
 }
 .grope{
