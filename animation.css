@@ -37,10 +37,26 @@
     0%{
         opacity: 1;
     }
+    25%{opacity: 0;}
+    50%{opacity: 0;}
     100%{
-        opacity: 0;
+        opacity: 1;
     }
 }
-.scroll-hide{
-    animation: scroll-anim 0.6s ease-out;
+.scroll-hide-slider{
+    animation: scroll-anim 0.6s forwards;
+}
+
+@keyframes scroll-anim2{
+    0%{
+        opacity: 1;
+    }
+    25%{opacity: 0;}
+    50%{opacity: 0;}
+    100%{
+        opacity: 1;
+    }
+}
+.scroll-hide-weeks{
+    animation: scroll-anim 0.6s forwards;
 }

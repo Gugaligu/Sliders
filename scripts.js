@@ -1,8 +1,7 @@
 let ex=document.getElementById("ex")
-let inc=document.getElementById("inc")
 let D=new Date()
 let Dayofnedel=D.getDay()
-let regulatorSlider=0
+console.log()
 const btnnext=document.getElementById("btnnext")
 const btnback=document.getElementById("btnback")
 const daynames=["понедельник", "вторник", "среда", "четверг", "пятница", "суббота"]
@@ -25,16 +24,17 @@ function getnedel() {
 let teknedel=getnedel()
 let peremnedel=getnedel()
 
+
+
+
 // берем пары на нужный день по неделе
 function getpara_po_nedel(nedel){
     ungrope = jsonData[Object.keys(jsonData)[0]][nedel]
     ungrope2=ungrope[Object.keys(ungrope).at(Dayofnedel%6)]
     for(i=0;i<5;i++){
-        document.querySelectorAll(`.para${i}`).forEach(function(el){
-            el.textContent=ungrope2[i]
-    })
+        document.querySelector(`.para${i}`).textContent=ungrope2[i]
     }
-}
+    }
 getpara_po_nedel(teknedel)
 
 
@@ -42,15 +42,15 @@ getpara_po_nedel(teknedel)
 // инициализация дня
 function DAYFUNC(){
     if(Dayofnedel==0){
-        document.getElementById(`DAY1`).textContent=(daynames.at(0))+` ${peremnedel}`;
+        document.getElementById(`slide`).textContent=(daynames.at(0))+` ${peremnedel}`;
         console.log(Dayofnedel)
     }
     else if(Dayofnedel==6){
-        document.getElementById(`DAY1`).textContent=(daynames.at(5))+` ${peremnedel}`;
+        document.getElementById(`slide`).textContent=(daynames.at(5))+` ${peremnedel}`;
         Dayofnedel--
     }
     else{
-        document.getElementById(`DAY1`).textContent=(daynames.at(Dayofnedel-1))+` ${peremnedel}`;
+        document.getElementById(`slide`).textContent=(daynames.at(Dayofnedel-1))+` ${peremnedel}`;
         Dayofnedel--
     }
 }
@@ -71,6 +71,11 @@ function slider_week_update(nedel){
         mass.push(n_nedel)
         
     }
+    document.querySelectorAll(".scroll-hide-weeks").forEach(function(el){
+        el.classList.remove("scroll-hide-weeks")
+        el.offsetWidth
+        el.classList.add("scroll-hide-weeks")
+    })
     document.getElementById("scroll-btn-1").textContent=`${mass.at(0)}`
     document.getElementById("scroll-btn-2").textContent=`${mass.at(1)}`
     document.getElementById("scroll-btn-3").textContent=`${mass.at(2)}`
@@ -82,26 +87,28 @@ slider_week_update(teknedel)
 
 // обработка нажатия на кнопку и обновление пар выбраного дня недели
 function btn_slide(action,nedel){
-    tmp_Dayofnedel_before=Dayofnedel%6
-    if (action==`back`){Dayofnedel-=1;}
-    else if(action==`next`){Dayofnedel+=1;}
-    tmp_Dayofnedel_after=Dayofnedel%6
-    regulatorSlider=!(regulatorSlider)
+    ex.classList.remove("scroll-hide-slider")
+    ex.offsetWidth
+    ex.classList.add("scroll-hide-slider")
+    setTimeout(function() {
+        // Код, который выполнится через n секунду
+        if (action==`back`){Dayofnedel-=1;}
+        else if(action==`next`){Dayofnedel+=1;}
+        tmp_Dayofnedel_after=Dayofnedel%6
 
-    if (tmp_Dayofnedel_before==5 && tmp_Dayofnedel_after==0 || tmp_Dayofnedel_before==-1 && tmp_Dayofnedel_after==0){
+        if (tmp_Dayofnedel_before==5 && tmp_Dayofnedel_after==0 || tmp_Dayofnedel_before==-1 && tmp_Dayofnedel_after==0){
         nedel++
-        peremnedel++}
-    else if (tmp_Dayofnedel_before==0 && tmp_Dayofnedel_after==5 || tmp_Dayofnedel_before==0 && tmp_Dayofnedel_after==-1){
+        peremnedel++
+        slider_week_update(peremnedel)}
+        else if (tmp_Dayofnedel_before==0 && tmp_Dayofnedel_after==5 || tmp_Dayofnedel_before==0 && tmp_Dayofnedel_after==-1){
         nedel--
         peremnedel--
-    }
-    console.log(Dayofnedel)
-    
-    document.getElementById(`DAY${Number(!(regulatorSlider))}`).textContent=(daynames.at(Dayofnedel%6))+` ${nedel}`;
-    let tmp=inc.className;
-    inc.className=`${ex.className}`;
-    ex.className=tmp;
+        slider_week_update(peremnedel)}
+
+    document.getElementById("slide").textContent=(daynames.at(Dayofnedel%6))+` ${nedel}`;
     getpara_po_nedel(nedel)
+      }, 200);
+    tmp_Dayofnedel_before=Dayofnedel%6
 }
 // обновление всего
 function updatenedel(nedel){
