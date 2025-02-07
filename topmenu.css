@@ -4,8 +4,14 @@ nav{
     justify-content: space-between;
     width: 100vw;
     height: 60px;    
-    border-bottom:1px solid aliceblue ;
+    border-bottom:1px solid aliceblue ;
+    
     background: rgb(10, 11, 16);
+}
+.neobhod{
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 .grope{
     background-color:rgba(0, 0, 0, 0);
@@ -13,8 +19,8 @@ nav{
     height: 100%;
     color: aliceblue;
     font-size: 20px;
+    font-weight: 700;
     border: 0px solid white;
-    font-family: 'Andale Mono', 'monospace'
 }
 .nav-btn{
     margin-right: 10px;
@@ -23,8 +29,18 @@ nav{
     height: 60px;
     color: aliceblue;
     font-size: 20px;
+    font-weight: 700;
     border: 0px solid white;
     font-family: 'Andale Mono', 'monospace';
+}
+.nav-menu{
+    display: none;
+    height: 45px;
+    width: 45px;
+    background:none;
+    border: 1px solid white;
+    border-radius: 50%;
+    
 }
 @media (pointer: fine) {
     .nav-btn:hover{
@@ -41,6 +57,19 @@ nav{
         text-shadow: 0 0 10px rgb(150, 149, 149), 0 0 0.4em rgb(148, 148, 148);
     }
     }
-    .select:active{
+    select:active{
         box-shadow: 0px 0px 21px -10px rgb(50, 70, 86) inset;
+}   
+    select:focus{
+        outline:none;
+    }
+@media (max-width: 740px){
+    .nav-btn{
+        display: none;
+    }
+    .nav-menu{
+        display: flex;
+        justify-content: center;  
+        align-items: center;
+    }
 }

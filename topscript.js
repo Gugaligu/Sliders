@@ -1,0 +1,1 @@
+val_gr=document.getElementById("gr").textContent
