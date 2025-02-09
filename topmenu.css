@@ -36,11 +36,16 @@ nav{
 .nav-menu{
     display: none;
     height: 45px;
-    width: 45px;
-    background:none;
+    width: 45px;  
+    background-color: black;
     border: 1px solid white;
     border-radius: 50%;
-    
+}
+svg{
+    display: none;
+    pointer-events: none;
+    position: relative;
+    left: 37px;
 }
 @media (pointer: fine) {
     .nav-btn:hover{
@@ -52,17 +57,10 @@ nav{
         box-shadow: 0px 0px 21px -10px rgb(50, 70, 86) inset;
 }
 @media (pointer: fine) {
-    select:hover{
-        color: rgb(255, 255, 255);
-        text-shadow: 0 0 10px rgb(150, 149, 149), 0 0 0.4em rgb(148, 148, 148);
-    }
-    }
-    select:active{
-        box-shadow: 0px 0px 21px -10px rgb(50, 70, 86) inset;
-}   
     select:focus{
         outline:none;
-    }
+}}
+
 @media (max-width: 740px){
     .nav-btn{
         display: none;
@@ -71,5 +69,8 @@ nav{
         display: flex;
         justify-content: center;  
         align-items: center;
+    }
+    svg{
+        display: block;
     }
 }
